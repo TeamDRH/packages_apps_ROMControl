@@ -40,6 +40,7 @@ public class ROMControlActivity extends PreferenceActivity implements ButtonBarH
     private static final String TAG = "ROM_Control";
 
     private static boolean hasNotificationLed;
+    private static boolean hasWifiOnly;
     private static String KEY_USE_ENGLISH_LOCALE = "use_english_locale";
 
     protected HashMap<Integer, Integer> mHeaderIndexMap = new HashMap<Integer, Integer>();
@@ -61,6 +62,7 @@ public class ROMControlActivity extends PreferenceActivity implements ButtonBarH
 
         mTablet = Settings.System.getInt(getContentResolver(), Settings.System.IS_TABLET, 0) == 1;
         hasNotificationLed = getResources().getBoolean(R.bool.has_notification_led);
+        hasWifiOnly = getResources().getBoolean(R.bool.has_wifi_only);
         defaultLocale = Locale.getDefault();
         Log.i(TAG, "defualt locale: " + defaultLocale.getDisplayName());
         setLocale();
@@ -212,6 +214,10 @@ public class ROMControlActivity extends PreferenceActivity implements ButtonBarH
 
             if (id == R.id.led) {
                 if (!hasNotificationLed) {
+                    target.remove(header);
+                }
+            } else if (id == R.id.statusbar_signal) {
+                if (hasWifiOnly) {
                     target.remove(header);
                 }
             } else if (id == R.id.power_saver && mTablet)

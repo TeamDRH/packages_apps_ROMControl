@@ -132,6 +132,11 @@ public class Lockscreens extends SettingsPreferenceFragment implements
         ((PreferenceGroup) findPreference("advanced_cat"))
                 .removePreference(findPreference(Settings.System.LOCKSCREEN_HIDE_NAV));
 
+        if (getResources().getBoolean(R.bool.use_gtab_only)) {
+            ((PreferenceGroup) findPreference("advanced_cat"))
+                .removePreference(findPreference(Settings.System.ENABLE_FAST_TORCH));
+        }
+
         refreshSettings();
         setHasOptionsMenu(true);
     }

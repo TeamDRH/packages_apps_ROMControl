@@ -350,7 +350,7 @@
 	<string name="ps_init_d">Configure tweaks that are run at boot
 		(init.d)
 	</string>
-	<string name="ps_enable_init_d">Enable/disabe start-up tweaks</string>
+	<string name="ps_enable_init_d">Enable/disable start-up tweaks</string>
 	<string name="ps_zipalign">Zipalign any unaligned apps on each boot</string>
 	<string name="ps_enable_sd_boost">Enable/disable SD card speed boost</string>
 	<string name="ps_sd_boost">Set value of read ahead in kb</string>
@@ -385,20 +385,22 @@
 	<string name="apply_values">Apply Values</string>
 	
 	<string name="dpi">DPI</string>
-	<string name="donate_roman">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=MZD7JLRX6P99Y</string>
-	<string name="donate_whitehawk">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=8W7F2Y7S7KRM6</string>
-	<string name="donate_zaph">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=AW4DJFL3UWKS2</string>
-	<string name="donate_protekk">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=YJTUMSBC2TRHS</string>
-	<string name="donate_khasmek">@null</string>
-	<string name="donate_sethyx">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=5R4DYJLDYDRAU</string>
+	<string name="donate_teamdrh">https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=U86AKQBLLDENQ&amp;lc=US&amp;item_name=TeamDRH ICS</string>
+	<string name="donate_ch3vr0n5">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=J99R4M5KZ5FWJ</string>
+	<string name="donate_fosser2">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=KAGXDNVPTUCE4</string>
+	<string name="donate_mayday_jay">https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=2R6XKB6UWBRFY&amp;lc=CA&amp;item_name=mayday_jay - Android ROM/Kernel Developer - Beer Fund</string>
+	<string name="donate_the3Dman">https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=the3dman@the3dman.org&amp;lc=US&amp;item_name=TeamDRH-The3DmaN</string>
+	<string name="donate_plastikman">https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=plastikman@gmail.com&amp;lc=US&amp;item_name=TeamDRH-plastikman</string>
+	<string name="donate_treznorx">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=XR4XSDVK9YZLU</string>
+	<string name="donate_tlb1961">https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=292VZ7WN435GU&amp;lc=US&amp;item_name=TeamDRH-tlb1961</string>
 	<string name="devs">Developers</string>
-	<string name="aokp">Android Open Kang Project</string>
-	<string name="aokp_website_title">AOKP Website</string>
-	<string name="aokp_website_summary">www.aokp.co - Find all newest releases here.</string>
-	<string name="aokp_source_title">AOKP Source</string>
-	<string name="aokp_source_summary">AOKP is fully open source. You can always check out the latest source at github.com/aokp</string>
+	<string name="aokp">TeamDRH</string>
+	<string name="aokp_website_title">TeamDRH Website</string>
+	<string name="aokp_website_summary">www.teamdrh.com - Find all newest releases here.</string>
+	<string name="aokp_source_title">TeamDRH Source</string>
+	<string name="aokp_source_summary">TeamDRH is fully open source. You can always check out the latest source at github.com/TeamDRH</string>
     <string name="aokp_irc_title">Join us on IRC</string>
-    <string name="aokp_irc_summary">#teamkang @ irc.freenode.net</string>
-    <string name="about_aokp">About AOKP</string>
+    <string name="aokp_irc_summary">#gtab-kerneldev @ irc.freenode.net</string>
+    <string name="about_aokp">About TeamDRH</string>
     <string name="about_aokp_summary">@null</string>
 </resources>

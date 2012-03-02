@@ -28,37 +28,41 @@
 		android:key="devs"
 		android:title="@string/devs">
 		<com.roman.romcontrol.widgets.DeveloperPreference
-			android:title="Roman"
-			aokp:twitterHandle="romanbb"
-			aokp:donateLink="@string/donate_roman" />
+			android:title="TeamDRH Donation"
+			aokp:donateLink="@string/donate_teamdrh" />
 
 		<com.roman.romcontrol.widgets.DeveloperPreference
-			android:title="Whitehawkx"
-			aokp:twitterHandle="whitehawkx"
-			aokp:donateLink="@string/donate_whitehawk" />
+			android:title="ch3vr0n5"
+			aokp:donateLink="@string/donate_ch3vr0n5" />
 
 		<com.roman.romcontrol.widgets.DeveloperPreference
-			android:title="Zaphod-Beeble"
-			aokp:donateLink="@string/donate_zaph" />
+			android:title="fosser2"
+			aokp:twitterHandle="105866349950326120154"
+			aokp:donateLink="@string/donate_fosser2" />
 
 		<com.roman.romcontrol.widgets.DeveloperPreference
-			android:title="Jonathon Grigg"
-			aokp:twitterHandle="jonathongrigg" />
+			android:title="mayday_jay"
+			aokp:twitterHandle="106963595789076860664"
+			aokp:donateLink="@string/donate_mayday_jay" />
 
 		<com.roman.romcontrol.widgets.DeveloperPreference
-			android:title="ProTekk"
-			aokp:twitterHandle="protekkfzs"
-			aokp:donateLink="@string/donate_protekk" />
+			android:title="the3Dman"
+			aokp:twitterHandle="117124754281343579829"
+			aokp:donateLink="@string/donate_the3Dman" />
 
 		<com.roman.romcontrol.widgets.DeveloperPreference
-			android:title="Khas Mek"
-			aokp:twitterHandle="KhasMek"
-			aokp:donateLink="@string/donate_khasmek" />
+			android:title="plastikman"
+			aokp:twitterHandle="107073236275143074560"
+			aokp:donateLink="@string/donate_plastikman" />
+
+		<com.roman.romcontrol.widgets.DeveloperPreference
+			android:title="treznorx"
+			aokp:twitterHandle="102414366483095111621"
+			aokp:donateLink="@string/donate_treznorx" />
 			
 		<com.roman.romcontrol.widgets.DeveloperPreference
-			android:title="sethyx"
-			aokp:twitterHandle="sethyx"
-			aokp:donateLink="@string/donate_sethyx" />
+			android:title="tlb1961"
+			aokp:donateLink="@string/donate_tlb1961" />
 	</PreferenceCategory>
 
 </PreferenceScreen>

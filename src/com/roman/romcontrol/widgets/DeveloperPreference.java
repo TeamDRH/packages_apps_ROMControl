@@ -66,7 +66,7 @@ public class DeveloperPreference extends Preference {
             this.setOnPreferenceClickListener(new OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Uri uriUrl = Uri.parse("http://twitter.com/#!/" + twitterHandle);
+                    Uri uriUrl = Uri.parse("http://plus.google.com/" + twitterHandle);
                     Intent twitter = new Intent(Intent.ACTION_VIEW, uriUrl);
                     getContext().startActivity(twitter);
                     return true;

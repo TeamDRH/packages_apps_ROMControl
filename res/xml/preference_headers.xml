@@ -93,7 +93,7 @@
 		android:summary="@string/header_summary_battery" />
 		
 	<header
-		android:id="@+id/statusbar_battery"
+		android:id="@+id/statusbar_signal"
 		android:title="@string/signal"
 		android:fragment="com.roman.romcontrol.fragments.StatusBarSignal"
 		android:icon="@drawable/ic_rom_control_signal"

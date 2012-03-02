@@ -63,6 +63,14 @@ public class PowerMenu extends PreferenceFragment {
         mShowNavBarHide.setChecked(Settings.System.getInt(getActivity()
                 .getContentResolver(), Settings.System.POWER_DIALOG_SHOW_NAVBAR_HIDE,
                 0) == 1);
+
+        if (getResources().getBoolean(R.bool.use_gtab_only)) {
+            getPreferenceScreen().removePreference(mShowTorchToggle);
+            getPreferenceScreen().removePreference(mShowNavBarHide);
+            getPreferenceScreen().removePreference(mShowPowerSaver);
+        }
+
+
     }
 
     @Override

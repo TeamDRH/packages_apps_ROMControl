@@ -32,11 +32,11 @@ public class About extends SettingsPreferenceFragment {
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference == mSiteUrl) {
-            launchUrl("http://aokp.co/");
+            launchUrl("http://teamdrh.com/");
         } else if (preference == mSourceUrl) {
-            launchUrl("http://github.com/aokp");
+            launchUrl("http://github.com/TeamDRH");
         } else if (preference == mIrcUrl) {
-            launchUrl("http://webchat.freenode.net/?channels=teamkang");
+            launchUrl("http://webchat.freenode.net/?channels=gtab-kerneldev");
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }

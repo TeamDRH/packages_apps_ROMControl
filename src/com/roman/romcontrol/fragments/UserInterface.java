@@ -122,6 +122,11 @@ public class UserInterface extends SettingsPreferenceFragment implements
             // can't get this working in ICS just yet
             ((PreferenceGroup) findPreference("crt")).removePreference(mCrtOnAnimation);
         }
+        if (getResources().getBoolean(R.bool.use_gtab_only)) {
+            prefs.removePreference((PreferenceGroup) findPreference("crt"));
+            ((PreferenceGroup) findPreference("misc")).removePreference(mShowImeSwitcher);
+            ((PreferenceGroup) findPreference("misc")).removePreference(mCustomLabel);
+        }
     }
 
     private void updateCustomLabelTextSummary() {
