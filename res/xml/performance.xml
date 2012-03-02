@@ -22,6 +22,12 @@
 			android:summary="@string/ps_set_gov"
 			android:dialogTitle="@string/pt_set_gov"
 			android:persistent="true" />
+		<ListPreference
+			android:key="sched"
+			android:title="@string/pt_set_sched"
+			android:summary="@string/ps_set_sched"
+			android:dialogTitle="@string/pt_set_sched"
+			android:persistent="true" />
 		<CheckBoxPreference
 			android:key="cpu_boot"
 			android:defaultValue="false"
@@ -32,8 +38,8 @@
 			android:title="Voltage Control">
 			<intent
 				android:action="android.intent.action.MAIN"
-				android:targetPackage="com.roman.romcontrol"
-				android:targetClass="com.roman.romcontrol.tools.VoltageControl" />
+				android:targetPackage="com.teamdrh.control"
+				android:targetClass="com.teamdrh.control.tools.VoltageControl" />
 		</PreferenceScreen>
 	</PreferenceCategory>
 	<PreferenceCategory
@@ -52,12 +58,28 @@
 			android:defaultValue="false"
 			android:title="@string/pt_free_memory_boot"
 			android:summary="@string/ps_free_memory_boot" />
+        <ListPreference
+            android:key="pref_scrollingcache"
+            android:dialogTitle="@string/pref_scrollingcache_title"
+            android:title="@string/pref_scrollingcache_title"
+            android:summary="@string/pref_scrollingcache_summary"
+            android:entries="@array/entries_scrollingcache"
+            android:entryValues="@array/values_scrollingcache" />
 	</PreferenceCategory>
-
-        <ListPreference android:key="pref_scrollingcache"
-                        android:dialogTitle="@string/pref_scrollingcache_title"
-                        android:title="@string/pref_scrollingcache_title"
-                        android:summary="@string/pref_scrollingcache_summary"
-                        android:entries="@array/entries_scrollingcache"
-                        android:entryValues="@array/values_scrollingcache" />
+	<PreferenceCategory
+	    android:title="@string/prefcat_perf_tweaks"
+	    android:key="performance">
+        <CheckBoxPreference
+            android:key="pref_purgeable_assets"
+            android:title="@string/pref_purgeable_assets_title"
+            android:summary="@string/pref_purgeable_assets_summary" />
+        <CheckBoxPreference
+            android:key="pref_use_dithering"
+            android:title="@string/pref_use_dithering_title"
+            android:summary="@string/pref_use_dithering_summary" />
+        <CheckBoxPreference
+            android:key="pref_use_16bpp_alpha"
+            android:title="@string/pref_use_16bpp_alpha_title"
+            android:summary="@string/pref_use_16bpp_alpha_summary" />
+	</PreferenceCategory>
 </PreferenceScreen>

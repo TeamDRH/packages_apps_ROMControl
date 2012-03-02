@@ -5,6 +5,8 @@
     <!-- Main -->
     <string name="user_interface">User Interface</string>
     <string name="general_ui">General UI</string>
+    <string name="quick_launch">Quick Launch Apps</string>
+    <string name="quick_launch_summary">Statusbar Application Quick Launch</string>
     <string name="lockscreen_options">Lockscreen options</string>
     <string name="power_menu_optons">Power menu options</string>
     <string name="functionality">Functionality</string>
@@ -19,8 +21,10 @@
     <string name="tools">Tools</string>
     <string name="weather">Weather</string>
     <string name="signal">Signal</string>
+    <string name="propmodder_title">Build Properties</string>
+
     
-    <string name="header_summary_battery">Battery bar, 1% battery mod, etc</string>
+    <string name="header_summary_battery">Battery icon style (icon, text, circle)</string>
     <string name="header_summary_general_ui">Boot animation, bug mailer, rotation, IME switcher, etc</string>
     <string name="header_summary_navigation_bar">Buttons to display, nav bar color, order</string>
     <string name="header_summary_lockscreens">Custom apps to launch, layout</string>
@@ -32,6 +36,7 @@
 	<string name="header_summary_clock">Clock location, AM/PM style, color</string>
 	<string name="header_summary_weather">Enable/disable, set custom location or network, and interval</string>
 	<string name="header_summary_signal">Signal dBm text</string>
+	<string name="header_summary_propmodder">Modify build.prop settings</string>
 	
     <string name="advanced_settings">Advanced settings</string>
     <string name="misc_short">Misc</string>
@@ -147,10 +152,12 @@
     <string name="lockscreen_wallpaper_summary">You can remove the wallpaper from the menu in this window</string>
     
     <!-- Power Menu -->
-    <string name="title_show_power_saver">Show power saver</string>
+    <string name="title_show_power_menu">Show power menu</string>
+    <string name="title_show_reboot_menu">Show reboot menu</string>
+    <string name="title_show_profiles_menu">Show profiles menu</string>
     <string name="title_show_screenshot">Show screenshot</string>
+    <string name="title_show_airplane_mode">Show airplane mode</string>
     <string name="title_show_torch_toggle">Show torch toggle</string>
-    <string name="title_show_airplane_toggle">Show airplane toggle</string>
     <string name="title_show_navbar_hide">Show navigation bar toggle</string>
     
     <!-- Power Saving -->
@@ -279,6 +286,7 @@
 	<!-- Preference Categories -->
 	<string name="prefcat_cpu">Set CPU</string>
 	<string name="prefcat_free_memory">Free Memory</string>
+	<string name="prefcat_perf_tweaks">Performance Tweaks</string>
 	<string name="pc_tweaks">Tweaks</string>
 	<string name="pc_init_d">Enable/Disable Tweaks</string>
 	<string name="pc_init_d_tweaks">Customize Tweaks</string>
@@ -318,6 +326,7 @@
 	<string name="pt_set_max">Max CPU</string>
 	<string name="pt_set_min">Min CPU</string>
 	<string name="pt_set_gov">Scaling governor</string>
+	<string name="pt_set_sched">I/O scheduler</string>
 	<string name="pt_cpu_boot">Set at boot</string>
         <!-- Scrolling Cache -->
         <string name="pref_scrollingcache_title">Scrolling cache</string>
@@ -350,7 +359,7 @@
 	<string name="ps_init_d">Configure tweaks that are run at boot
 		(init.d)
 	</string>
-	<string name="ps_enable_init_d">Enable/disabe start-up tweaks</string>
+	<string name="ps_enable_init_d">Enable/disable start-up tweaks</string>
 	<string name="ps_zipalign">Zipalign any unaligned apps on each boot</string>
 	<string name="ps_enable_sd_boost">Enable/disable SD card speed boost</string>
 	<string name="ps_sd_boost">Set value of read ahead in kb</string>
@@ -362,9 +371,10 @@
 	<string name="ps_set_max">Set max CPU scaling frequency\nCurrent: %s</string>
 	<string name="ps_set_min">Set min CPU scaling frequency\nCurrent: %s</string>
 	<string name="ps_set_gov">Set current scaling governor\nCurrent: %s</string>
+	<string name="ps_set_sched">Set current I/O scheduler\nCurrent: %s</string>
 	<string name="ps_cpu_boot">Apply CPU at boot</string>
 	<!-- Performance -->
-	<string name="ps_set_cpu_activity">Set min/max frequencies and scaling governor
+	<string name="ps_set_cpu_activity">Set min/max frequencies, governor and scheduler
 	</string>
 	<string name="ps_free_memory">Amount of RAM the minfree taskkiller will keep |
 		Current: %s</string>
@@ -385,20 +395,140 @@
 	<string name="apply_values">Apply Values</string>
 	
 	<string name="dpi">DPI</string>
-	<string name="donate_roman">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=MZD7JLRX6P99Y</string>
-	<string name="donate_whitehawk">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=8W7F2Y7S7KRM6</string>
-	<string name="donate_zaph">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=AW4DJFL3UWKS2</string>
-	<string name="donate_protekk">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=YJTUMSBC2TRHS</string>
-	<string name="donate_khasmek">@null</string>
-	<string name="donate_sethyx">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=5R4DYJLDYDRAU</string>
+	<string name="donate_teamdrh">https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=U86AKQBLLDENQ&amp;lc=US&amp;item_name=TeamDRH ICS</string>
+	<string name="donate_ch3vr0n5">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=J99R4M5KZ5FWJ</string>
+	<string name="donate_fosser2">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=KAGXDNVPTUCE4</string>
+	<string name="donate_mayday_jay">https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=2R6XKB6UWBRFY&amp;lc=CA&amp;item_name=mayday_jay - Android ROM/Kernel Developer - Beer Fund</string>
+	<string name="donate_the3Dman">https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=the3dman@the3dman.org&amp;lc=US&amp;item_name=TeamDRH-The3DmaN</string>
+	<string name="donate_plastikman">https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=plastikman@gmail.com&amp;lc=US&amp;item_name=TeamDRH-plastikman</string>
+	<string name="donate_treznorx">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=XR4XSDVK9YZLU</string>
+	<string name="donate_tlb1961">https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=292VZ7WN435GU&amp;lc=US&amp;item_name=TeamDRH-tlb1961</string>
 	<string name="devs">Developers</string>
-	<string name="aokp">Android Open Kang Project</string>
-	<string name="aokp_website_title">AOKP Website</string>
-	<string name="aokp_website_summary">www.aokp.co - Find all newest releases here.</string>
-	<string name="aokp_source_title">AOKP Source</string>
-	<string name="aokp_source_summary">AOKP is fully open source. You can always check out the latest source at github.com/aokp</string>
-    <string name="aokp_irc_title">Join us on IRC</string>
-    <string name="aokp_irc_summary">#teamkang @ irc.freenode.net</string>
-    <string name="about_aokp">About AOKP</string>
-    <string name="about_aokp_summary">@null</string>
+	<string name="teamdrh">TeamDRH</string>
+	<string name="teamdrh_website_title">TeamDRH Website</string>
+	<string name="teamdrh_website_summary">www.teamdrh.com - Find all newest releases here.</string>
+	<string name="teamdrh_source_title">TeamDRH Source</string>
+	<string name="teamdrh_source_summary">TeamDRH is fully open source. You can always check out the latest source at github.com/TeamDRH</string>
+    <string name="teamdrh_irc_title">Join us on IRC</string>
+    <string name="teamdrh_irc_summary">#gtab-kerneldev @ irc.freenode.net</string>
+    <string name="about_teamdrh">About TeamDRH</string>
+    <string name="about_teamdrh_summary">@null</string>
+
+    <!-- PropModder -->
+    <string name="buildprop_title">/system/build.prop mods</string>
+    <string name="nonprop_cat_title">Mods involving init.d script</string>
+    <string name="main_warning_title">YOU HAVE BEEN WARNED</string>
+    <string name="main_warning_summary">This app was conceived while watching monkeys juggling knives.  It hacks your \'/system/build.prop\' WE ARE NOT RESPONSIBLE FOR ACCIDENTAL KNIFE CUTS! Your device your responsibility</string>
+    <string name="pref_wifi_scan_interval_title">Wifi scan interval</string>
+    <string name="pref_wifi_scan_interval_summary">The time between wifi scans when no stored access points are available (requires reboot)</string>
+    <string name="pref_wifi_scan_alt_summary">Time between wifi scans: %s</string>
+    <string name="pref_lcd_density_title">LCD density</string>
+    <string name="pref_lcd_density_summary">This is the screen density allowing more high definition look (requires reboot)</string>
+    <string name="pref_lcd_density_alt_summary">Screen density: %s</string>
+    <string name="pref_max_events_title">Windows Manager\'s max events per second</string>
+    <string name="pref_max_events_summary">This is a runtime value that controls the number of events the system will allow in a second (requires reboot)</string>
+    <string name="pref_max_events_alt_summary">Max number of system events: %s</string>
+    <string name="pref_usb_mode_title">Default USB mode</string>
+    <string name="pref_usb_mode_summary">This decides what the default setting is when you plug in to a computer via USB (requires reboot)</string>
+    <string name="pref_ring_delay_title">Telephone ringer delay</string>
+    <string name="pref_ring_delay_summary">The amount of time from when the system registers an incoming phone call until the ringer starts (requires reboot)</string>
+    <string name="pref_ring_delay_alt_summary">Incoming call Delay: %s</string>
+    <string name="pref_vm_heapstartsize_title">Dalvik cache heap start size</string>
+    <string name="pref_vm_heapstartsize_summary">This controls the start size of the cache for the Dalvik VM (requires reboot)</string>
+    <string name="pref_vm_heapstartsize_alt_summary">Dalvik VM cache start size: %s</string>
+    <string name="pref_vm_heapgrowthlimit_title">Dalvik cache growth limit</string>
+    <string name="pref_vm_heapgrowthlimit_summary">This controls the size the cache can grow to without largeHeap true (requires reboot)</string>
+    <string name="pref_vm_heapgrowthlimit_alt_summary">Dalvik VM cache growthlimit: %s</string>
+    <string name="pref_vm_heapsize_title">Dalvik cache heapsize</string>
+    <string name="pref_vm_heapsize_summary">This controls the size of the cache the Dalvik VM has access to (requires reboot)</string>
+    <string name="pref_vm_heapsize_alt_summary">Dalvik VM cache heap size: %s</string>
+    <string name="propmodder_warning_title">ROOT IS REQUIRED</string>
+    <string name="propmodder_warning">This program changes system properties in /system/build.prop DO NOT USE if you don\'t know what you are doing. We (n00bware, makers of PropModder) are not responsible for your device PERIOD. You have been warned</string>
+    <string name="showbuild_title">Do you know what is in your build.prop</string>
+    <string name="showbuild_dialog">This is your /system/build.prop</string>
+    <string name="showbuild_loading">Loading build.prop\u2026</string>
+    <string name="showbuild_error">Error loading build.prop\u2026</string>
+    <string name="showbuild_unknown">Unknown</string>
+    <string name="showbuild_version">Version</string>
+    <string name="showbuild_label">We should look because knowing is half the battle</string>
+    <string name="pref_fast_up_title">HSUPA upload speed hack</string>
+    <string name="pref_fast_up_summary">*WARNING* if you change this value it will add the needed values to your build.prop if they are not already present (requires reboot)</string>
+    <string name="pref_fast_up_alt_summary">Fast up found active: %s</string>
+    <string name="pref_disable_boot_anim_title">Disable Boot Animation</string>
+    <string name="pref_disable_boot_anim_summary">Disable system boot animation (requires reboot)</string>
+    <string name="pref_prox_delay_title">Proximity sensor delay</string>
+    <string name="pref_prox_delay_summary">When you are in-call screen is off when the device moves away from your face this delay value controls how long before screen turns on (requires reboot)</string>
+    <string name="pref_prox_delay_alt_summary">Proximity sensor set to: %s</string>
+    <string name="pref_logcat_title">Disable logcat</string>
+    <string name="pref_logcat_summary">Disabling logcat can improve system speed, but makes debugging very difficult</string>
+    <string name="pref_mod_version_title">Change your Build Number</string>
+    <string name="pref_mod_version_summary">This is astetic and doesn\'t improve the system</string>
+    <string name="pref_mod_version_alt_summary">Build Number: %s</string>
+    <string name="pref_mod_version_default">PropModder!!!</string>
+    <string name="pref_sleep_title">PM Sleep mode</string>
+    <string name="pref_sleep_summary">Modify Nighttime sleep policy</string>
+    <string name="pref_sleep_alt_summary">Current Sleep Mode: %s</string>
+    <string name="pref_jit_title">Just In Time Complier</string>
+    <string name="pref_jit_summary">enables/disables JIT complier in dalvik vm</string>
+    <string name="pref_tcp_stack_title">Optimize TCP Stack</string>
+    <string name="pref_tcp_stack_summary">Modify the buffer-size for better performance</string>
+    <string name="pref_check_in_title">Check in service</string>
+    <string name="pref_check_in_summary">Stop sending system usage data to Google and HTC</string>
+    <string name="pref_sdcard_buffer_title">Sdcard speed hack</string>
+    <string name="pref_sdcard_buffer_summary">Modify the sdcard buffer-size for better performance</string>
+    <string name="pref_g_speed_title">3G Speed Hack</string>
+    <string name="pref_g_speed_summary">Uncap 3g speed</string>
+    <string name="pref_gpu_title">GPU Acceleration</string>
+    <string name="pref_gpu_summary">To enable hardware acceleration where the GPU controls the UI instead of the CPU</string>
+    <string name="pref_vvmail_title">VVMail (Sense ROMs ONLY)</string>
+    <string name="pref_vvmail_summary">force Sense ROMS compatibility with VVMail</string>
+    <string name="pref_build_fingerprint_title">Build Fingerprint</string>
+    <string name="pref_build_fingerprint_summary">Modify build fingerprint for market identification</string>
+    <string name="pref_build_fingerprint_alt_summary">Build Fingerprint: %s</string>
+
+    <!-- Interface title for Settings -->
+    <string name="drh">DRH</string>
+    <string name="drh_interface_settings">Interface Settings</string>
+    <string name="drh_interface_settings_summary">Status Bar Widget Settings and Toggles</string>
+    <string name="drh_interface_tablet">Tablet Interface Settings</string>
+    <string name="drh_interface_settings_settings">Status Bar Notification Widget/Toggle Settings</string>
+    <string name="drh_interface_settings_drh">Enable DRH Quick Widget Settings</string>
+    <string name="drh_interface_drh_quick_enabled">Select DRH Quick Widget Settings</string>
+    <string name="drh_interface_settings_drh_phone_top">Show DRH Settings at the top</string>
+    <string name="drh_interface_settings_drh_phone_bottom">Show DRH Settings at the bottom</string>
+    <string name="drh_interface_settings_standard">Standard Quick Toggle settings</string>
+    <string name="drh_interface_statusbar">Status Bar</string>
+    <string name="drh_interface_statusbar_battery_icon">Battery Icon</string>
+    <string name="drh_interface_statusbar_battery_text">Battery Text</string>
+    <string name="drh_interface_statusbar_gravity">Status Bar on Top (requires reboot)</string>
+    <string name="drh_interface_statusbar_visibility">Show the status bar toggle in the power menu</string>
+
+    <!-- From CM Settings for additional Performance Tweaks -->
+
+    <!-- Performance Settings : Warning dialog #CM -->
+    <string name="performance_settings_warning_title">Proceed with Caution</string>
+    <string name="performance_settings_warning">These settings are included for experimentation and any changes made to them have the potential to cause instability, crashes, data loss or hardware failures.\n\nWe request you do not file bug reports if any of these settings have been changed from the defaults.</string>
+
+    <!-- Purgeable Assets -->
+    <string name="pref_purgeable_assets_title">Allow purging of assets</string>
+    <string name="pref_purgeable_assets_summary">Purging of bitmap memory assets allows the freeing of more RAM when needed (requires reboot)</string>
+
+    <!-- Performance Settings : Dithering -->
+    <string name="pref_use_dithering_title">Surface dithering</string>
+    <string name="pref_use_dithering_summary">Dithering improves image quality on some displays at the cost of performance (requires reboot)</string>
+
+    <!-- Performance Settings : 16bpp Alpha -->
+    <string name="pref_use_16bpp_alpha_title">16bit transparency</string>
+    <string name="pref_use_16bpp_alpha_summary">Better graphics performance, but lower quality and may cause visual artifacts (requires reboot)</string>
+
+    <string name="drh_lockscreen">Lockscreen options</string>
+    <string name="drh_lockscreen_rotation">Enable rotation</string>
+    <string name="drh_lockscreen_actions">Lockscreen actions</string>
+    <string name="drh_lockscreen_actions_add">Add action</string>
+    <string name="drh_lockscreen_actions_save">Save</string>
+    <string name="drh_lockscreen_actions_action_add">+</string>
+    <string name="drh_lockscreen_actions_action_remove">-</string>
+    <string name="drh_lockscreen_default_targets">unlock</string>
+
+
 </resources>
