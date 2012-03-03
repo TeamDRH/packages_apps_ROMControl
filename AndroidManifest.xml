@@ -159,6 +159,28 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+        <activity android:name=".fragments.PropModder"
+            android:label="Build Props" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.aokp.romcontrol.SHORTCUT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".util.ShowBuildProp">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".fragments.InitD"
+            android:label="Startup Tweaks" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.aokp.romcontrol.SHORTCUT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".fragments.About"
             android:label="@string/about_aokp" >

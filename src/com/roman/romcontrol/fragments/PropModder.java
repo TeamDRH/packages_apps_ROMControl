@@ -76,26 +76,22 @@ public class PropModder extends PreferenceFragment implements
     private static final String USB_MODE_PROP = "ro.default_usb_mode";
     private static final String USB_MODE_PERSIST_PROP = "persist.usb_mode";
     private static final String USB_MODE_DEFAULT = System.getProperty(USB_MODE_PROP);
-    private static final String RING_DELAY_PREF = "pref_ring_delay";
-    private static final String RING_DELAY_PROP = "ro.telephony.call_ring.delay";
-    private static final String RING_DELAY_PERSIST_PROP = "persist.call_ring.delay";
-    private static final String RING_DELAY_DEFAULT = System.getProperty(RING_DELAY_PROP);
+    private static final String VM_HEAPSTARTSIZE_PREF = "pref_vm_heapstartsize";
+    private static final String VM_HEAPSTARTSIZE_PROP = "dalvik.vm.heapstartsize";
+    private static final String VM_HEAPSTARTSIZE_PERSIST_PROP = "persist.vm_heapstartsize";
+    private static final String VM_HEAPSTARTSIZE_DEFAULT = System.getProperty(VM_HEAPSTARTSIZE_PROP);
+    private static final String VM_HEAPGROWTHLIMIT_PREF = "pref_vm_heapgrowthlimit";
+    private static final String VM_HEAPGROWTHLIMIT_PROP = "dalvik.vm.heapgrowthlimit";
+    private static final String VM_HEAPGROWTHLIMIT_PERSIST_PROP = "persist.vm_heapgrowthlimit";
+    private static final String VM_HEAPGROWTHLIMIT_DEFAULT = System.getProperty(VM_HEAPGROWTHLIMIT_PROP);
     private static final String VM_HEAPSIZE_PREF = "pref_vm_heapsize";
     private static final String VM_HEAPSIZE_PROP = "dalvik.vm.heapsize";
     private static final String VM_HEAPSIZE_PERSIST_PROP = "persist.vm_heapsize";
     private static final String VM_HEAPSIZE_DEFAULT = System.getProperty(VM_HEAPSIZE_PROP);
-    private static final String FAST_UP_PREF = "pref_fast_up";
-    private static final String FAST_UP_PROP = "ro.ril.hsxpa";
-    private static final String FAST_UP_PERSIST_PROP = "persist.fast_up";
-    private static final String FAST_UP_DEFAULT = System.getProperty(FAST_UP_PROP);
     private static final String DISABLE_BOOT_ANIM_PREF = "pref_disable_boot_anim";
     private static final String DISABLE_BOOT_ANIM_PROP_1 = "ro.kernel.android.bootanim";
     private static final String DISABLE_BOOT_ANIM_PROP_2 = "debug.sf.nobootanimation";
     private static final String DISABLE_BOOT_ANIM_PERSIST_PROP = "persist.disable_boot_anim";
-    private static final String PROX_DELAY_PREF = "pref_prox_delay";
-    private static final String PROX_DELAY_PROP = "mot.proximity.delay";
-    private static final String PROX_DELAY_PERSIST_PROP = "persist.prox.delay";
-    private static final String PROX_DELAY_DEFAULT = System.getProperty(PROX_DELAY_PROP);
     private static final String LOGCAT_PREF = "pref_logcat";
     private static final String LOGCAT_PERSIST_PROP = "persist.logcat";
     private static final String LOGCAT_DISABLE = "#rm -f /dev/log/main";
@@ -128,23 +124,9 @@ public class PropModder extends PreferenceFragment implements
     private static final String CHECK_IN_PROP_HTC = "ro.config.htc.nocheckin";
     private static final String SDCARD_BUFFER_PREF = "pref_sdcard_buffer";
     private static final String SDCARD_BUFFER_PRESIST_PROP = "persist_sdcard_buffer";
-    private static final String THREE_G_PREF = "pref_g_speed";
-    private static final String THREE_G_PERSIST_PROP = "persist_3g_speed";
-    private static final String THREE_G_PROP_0 = "ro.ril.enable.3g.prefix";
-    private static final String THREE_G_PROP_1 = "ro.ril.hep";
-    private static final String THREE_G_PROP_2 = FAST_UP_PROP;
-    private static final String THREE_G_PROP_3 = "ro.ril.enable.dtm";
-    private static final String THREE_G_PROP_4 = "ro.ril.gprsclass";
-    private static final String THREE_G_PROP_5 = "ro.ril.hsdpa.category";
-    private static final String THREE_G_PROP_6 = "ro.ril.enable.a53";
-    private static final String THREE_G_PROP_7 = "ro.ril.hsupa.category";
     private static final String GPU_PREF = "pref_gpu";
     private static final String GPU_PERSIST_PROP = "persist_gpu";
     private static final String GPU_PROP = "debug.sf.hw";
-    private static final String VVMAIL_PREF = "pref_vvmail";
-    private static final String VVMAIL_PERSIST_PROP = "persist_vvmail";
-    private static final String VVMAIL_PROP_0 = "HorizontalVVM";
-    private static final String VVMAIL_PROP_1 = "HorizontalBUA";
 
     private String placeholder;
     private String tcpstack0;
@@ -162,11 +144,10 @@ public class PropModder extends PreferenceFragment implements
     private ListPreference mWifiScanPref;
     private ListPreference mLcdDensityPref;
     private ListPreference mMaxEventsPref;
-    private ListPreference mRingDelayPref;
+    private ListPreference mVmHeapStartsizePref;
+    private ListPreference mVmHeapGrowthlimitPref;
     private ListPreference mVmHeapsizePref;
-    private ListPreference mFastUpPref;
     private CheckBoxPreference mDisableBootAnimPref;
-    private ListPreference mProxDelayPref;
     private CheckBoxPreference mLogcatPref;
     private EditTextPreference mModVersionPref;
     private ListPreference mSleepPref;
@@ -174,9 +155,7 @@ public class PropModder extends PreferenceFragment implements
     private CheckBoxPreference mJitPref;
     private CheckBoxPreference mCheckInPref;
     private ListPreference mSdcardBufferPref;
-    private CheckBoxPreference m3gSpeedPref;
     private CheckBoxPreference mGpuPref;
-    private CheckBoxPreference mVvmailPref;
     private AlertDialog mAlertDialog;
     private NotificationManager mNotificationManager;
 
@@ -201,19 +180,16 @@ public class PropModder extends PreferenceFragment implements
         mMaxEventsPref = (ListPreference) prefSet.findPreference(MAX_EVENTS_PREF);
         mMaxEventsPref.setOnPreferenceChangeListener(this);
 
-        mRingDelayPref = (ListPreference) prefSet.findPreference(RING_DELAY_PREF);
-        mRingDelayPref.setOnPreferenceChangeListener(this);
+        mVmHeapStartsizePref = (ListPreference) prefSet.findPreference(VM_HEAPSTARTSIZE_PREF);
+        mVmHeapStartsizePref.setOnPreferenceChangeListener(this);
+
+        mVmHeapGrowthlimitPref = (ListPreference) prefSet.findPreference(VM_HEAPGROWTHLIMIT_PREF);
+        mVmHeapGrowthlimitPref.setOnPreferenceChangeListener(this);
 
         mVmHeapsizePref = (ListPreference) prefSet.findPreference(VM_HEAPSIZE_PREF);
         mVmHeapsizePref.setOnPreferenceChangeListener(this);
 
-        mFastUpPref = (ListPreference) prefSet.findPreference(FAST_UP_PREF);
-        mFastUpPref.setOnPreferenceChangeListener(this);
-
         mDisableBootAnimPref = (CheckBoxPreference) prefSet.findPreference(DISABLE_BOOT_ANIM_PREF);
-
-        mProxDelayPref = (ListPreference) prefSet.findPreference(PROX_DELAY_PREF);
-        mProxDelayPref.setOnPreferenceChangeListener(this);
 
         //we may need a new method of detection here
         mLogcatPref = (CheckBoxPreference) prefSet.findPreference(LOGCAT_PREF);
@@ -237,7 +213,7 @@ public class PropModder extends PreferenceFragment implements
             }
             mModVersionPref.setSummary(String.format(getString(R.string.pref_mod_version_alt_summary), mod));
         }
-        Log.d(TAG, String.format("ModPrefHoler = '%s' found build number = '%s'", ModPrefHolder, mod));
+        Log.d(TAG, String.format("ModPrefHolder = '%s' found build number = '%s'", ModPrefHolder, mod));
         mModVersionPref.setOnPreferenceChangeListener(this);
 
         mCheckInPref = (CheckBoxPreference) prefSet.findPreference(CHECK_IN_PREF);
@@ -247,19 +223,7 @@ public class PropModder extends PreferenceFragment implements
         mSdcardBufferPref = (ListPreference) prefSet.findPreference(SDCARD_BUFFER_PREF);
         mSdcardBufferPref.setOnPreferenceChangeListener(this);
 
-        m3gSpeedPref = (CheckBoxPreference) prefSet.findPreference(THREE_G_PREF);
-
         mGpuPref = (CheckBoxPreference) prefSet.findPreference(GPU_PREF);
-
-        mVvmailPref = (CheckBoxPreference) prefSet.findPreference(VVMAIL_PREF);
-
-        if (getResources().getBoolean(R.bool.use_gtab_only)) {
-            getPreferenceScreen().removePreference(mRingDelayPref);
-            getPreferenceScreen().removePreference(mFastUpPref);
-            getPreferenceScreen().removePreference(mProxDelayPref);
-            getPreferenceScreen().removePreference(m3gSpeedPref);
-            getPreferenceScreen().removePreference(mVvmailPref);
-        }
 
         updateScreen();
         /*
@@ -350,23 +314,9 @@ public class PropModder extends PreferenceFragment implements
             value = mCheckInPref.isChecked();
             return doMod(null, CHECK_IN_PROP_HTC, String.valueOf(value ? 1 : DISABLE))
             && doMod(CHECK_IN_PERSIST_PROP, CHECK_IN_PROP, String.valueOf(value ? 1 : DISABLE));
-        } else if (preference == m3gSpeedPref) {
-            value = m3gSpeedPref.isChecked();
-            return doMod(THREE_G_PERSIST_PROP, THREE_G_PROP_0, String.valueOf(value ? 1 : DISABLE))
-                && doMod(null, THREE_G_PROP_1, String.valueOf(value ? 1 : DISABLE))
-                && doMod(null, THREE_G_PROP_2, String.valueOf(value ? 2 : DISABLE))
-                && doMod(null, THREE_G_PROP_3, String.valueOf(value ? 1 : DISABLE))
-                && doMod(null, THREE_G_PROP_4, String.valueOf(value ? 12 : DISABLE))
-                && doMod(null, THREE_G_PROP_5, String.valueOf(value ? 8 : DISABLE))
-                && doMod(null, THREE_G_PROP_6, String.valueOf(value ? 1 : DISABLE))
-                && doMod(null, THREE_G_PROP_7, String.valueOf(value ? 5 : DISABLE));
         } else if (preference == mGpuPref) {
             value = mGpuPref.isChecked();
             return doMod(GPU_PERSIST_PROP, GPU_PROP, String.valueOf(value ? 1 : DISABLE));
-        } else if (preference == mVvmailPref) {
-            value = mVvmailPref.isChecked();
-            return doMod(VVMAIL_PERSIST_PROP, VVMAIL_PROP_0, String.valueOf(value ? true : DISABLE))
-                && doMod(null, VVMAIL_PROP_1, String.valueOf(value ? true : DISABLE));
         } else if (preference == mRebootMsg) {
             return cmd.su.runWaitFor("reboot").success();
         }
@@ -387,17 +337,14 @@ public class PropModder extends PreferenceFragment implements
             } else if (preference == mMaxEventsPref) {
                 return doMod(MAX_EVENTS_PERSIST_PROP, MAX_EVENTS_PROP,
                         newValue.toString());
-            } else if (preference == mRingDelayPref) {
-                return doMod(RING_DELAY_PERSIST_PROP, RING_DELAY_PROP,
+            } else if (preference == mVmHeapStartsizePref) {
+                return doMod(VM_HEAPSTARTSIZE_PERSIST_PROP, VM_HEAPSTARTSIZE_PROP,
+                        newValue.toString());
+            } else if (preference == mVmHeapGrowthlimitPref) {
+                return doMod(VM_HEAPGROWTHLIMIT_PERSIST_PROP, VM_HEAPGROWTHLIMIT_PROP,
                         newValue.toString());
             } else if (preference == mVmHeapsizePref) {
                 return doMod(VM_HEAPSIZE_PERSIST_PROP, VM_HEAPSIZE_PROP,
-                        newValue.toString());
-            } else if (preference == mFastUpPref) {
-                return doMod(FAST_UP_PERSIST_PROP, FAST_UP_PROP,
-                        newValue.toString());
-            } else if (preference == mProxDelayPref) {
-                 return doMod(PROX_DELAY_PERSIST_PROP, PROX_DELAY_PROP,
                         newValue.toString());
             } else if (preference == mModVersionPref) {
                  return doMod(MOD_VERSION_PERSIST_PROP, MOD_VERSION_PROP,
@@ -554,14 +501,19 @@ public class PropModder extends PreferenceFragment implements
         } else {
             mMaxEventsPref.setValue(MAX_EVENTS_DEFAULT);
         }
-        if (!getResources().getBoolean(R.bool.use_gtab_only)) {
-            String ring = Helpers.findBuildPropValueOf(RING_DELAY_PROP);
-            if (!ring.equals(DISABLE)) {
-                mRingDelayPref.setValue(ring);
-                mRingDelayPref.setSummary(String.format(getString(R.string.pref_ring_delay_alt_summary), ring));
-            } else {
-                mRingDelayPref.setValue(RING_DELAY_DEFAULT);
-            }
+        String vmss = Helpers.findBuildPropValueOf(VM_HEAPSTARTSIZE_PROP);
+        if (!vmss.equals(DISABLE)) {
+            mVmHeapStartsizePref.setValue(vmss);
+            mVmHeapStartsizePref.setSummary(String.format(getString(R.string.pref_vm_heapstartsize_alt_summary), vmss));
+        } else {
+            mVmHeapStartsizePref.setValue(VM_HEAPSTARTSIZE_DEFAULT);
+        }
+        String vmgl = Helpers.findBuildPropValueOf(VM_HEAPGROWTHLIMIT_PROP);
+        if (!vmgl.equals(DISABLE)) {
+            mVmHeapGrowthlimitPref.setValue(vmgl);
+            mVmHeapGrowthlimitPref.setSummary(String.format(getString(R.string.pref_vm_heapgrowthlimit_alt_summary), vmgl));
+        } else {
+            mVmHeapsizePref.setValue(VM_HEAPSIZE_DEFAULT);
         }
         String vm = Helpers.findBuildPropValueOf(VM_HEAPSIZE_PROP);
         if (!vm.equals(DISABLE)) {
@@ -569,13 +521,6 @@ public class PropModder extends PreferenceFragment implements
             mVmHeapsizePref.setSummary(String.format(getString(R.string.pref_vm_heapsize_alt_summary), vm));
         } else {
             mVmHeapsizePref.setValue(VM_HEAPSIZE_DEFAULT);
-        }
-        String fast = Helpers.findBuildPropValueOf(FAST_UP_PROP);
-        if (!fast.equals(DISABLE)) {
-            mFastUpPref.setValue(fast);
-            mFastUpPref.setSummary(String.format(getString(R.string.pref_fast_up_alt_summary), fast));
-        } else {
-            mFastUpPref.setValue(FAST_UP_DEFAULT);
         }
         String ba1 = Helpers.findBuildPropValueOf(DISABLE_BOOT_ANIM_PROP_1);
         String ba2 = Helpers.findBuildPropValueOf(DISABLE_BOOT_ANIM_PROP_2);
@@ -585,13 +530,6 @@ public class PropModder extends PreferenceFragment implements
         } else {
             Log.d(TAG, "bootanimation is enabled");
             mDisableBootAnimPref.setChecked(true);
-        }
-        String prox = Helpers.findBuildPropValueOf(PROX_DELAY_PROP);
-        if (!prox.equals(DISABLE)) {
-            mProxDelayPref.setValue(prox);
-            mProxDelayPref.setSummary(String.format(getString(R.string.pref_prox_delay_alt_summary), prox));
-        } else {
-            mProxDelayPref.setValue(PROX_DELAY_DEFAULT);
         }
         boolean rmLogging = cmd.su.runWaitFor(String.format("grep -q \"#rm -f /dev/log/main\" %s", INIT_SCRIPT_PATH)).success();
         mLogcatPref.setChecked(!rmLogging);
@@ -622,27 +560,11 @@ public class PropModder extends PreferenceFragment implements
         } else {
             mCheckInPref.setChecked(false);
         }
-        String g0 = Helpers.findBuildPropValueOf(THREE_G_PROP_0);
-        String g3 = Helpers.findBuildPropValueOf(THREE_G_PROP_3);
-        String g6 = Helpers.findBuildPropValueOf(THREE_G_PROP_6);
-        if (g0.equals("1") && g3.equals("1") && g6.equals("1")) {
-            m3gSpeedPref.setChecked(true);
-        } else {
-            m3gSpeedPref.setChecked(false);
-        }
         String gpu = Helpers.findBuildPropValueOf(GPU_PROP);
         if (!gpu.equals(DISABLE)) {
             mGpuPref.setChecked(true);
         } else {
             mGpuPref.setChecked(false);
         }
-        String vvmail0 = Helpers.findBuildPropValueOf(VVMAIL_PROP_0);
-        String vvmail1 = Helpers.findBuildPropValueOf(VVMAIL_PROP_1);
-        if (!vvmail0.equals(DISABLE) && !vvmail1.equals(DISABLE)) {
-            mVvmailPref.setChecked(true);
-        } else {
-            mVvmailPref.setChecked(false);
-        }
     }
 }
-
