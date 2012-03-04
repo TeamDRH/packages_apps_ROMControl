@@ -127,6 +127,10 @@ public class PropModder extends PreferenceFragment implements
     private static final String GPU_PREF = "pref_gpu";
     private static final String GPU_PERSIST_PROP = "persist_gpu";
     private static final String GPU_PROP = "debug.sf.hw";
+    private static final String BUILD_FINGERPRINT_PREF = "pref_build_fingerprint";
+    private static final String BUILD_FINGERPRINT_PROP = "ro.build.fingerprint";
+    private static final String BUILD_FINGERPRINT_PERSIST_PROP = "persist.build_fingerprint";
+    private static final String BUILD_FINGERPRINT_DEFAULT = System.getProperty(BUILD_FINGERPRINT_PROP);
 
     private String placeholder;
     private String tcpstack0;
@@ -156,6 +160,7 @@ public class PropModder extends PreferenceFragment implements
     private CheckBoxPreference mCheckInPref;
     private ListPreference mSdcardBufferPref;
     private CheckBoxPreference mGpuPref;
+    private ListPreference mBuildFingerprintPref;
     private AlertDialog mAlertDialog;
     private NotificationManager mNotificationManager;
 
@@ -200,6 +205,9 @@ public class PropModder extends PreferenceFragment implements
         mTcpStackPref = (CheckBoxPreference) prefSet.findPreference(TCP_STACK_PREF);
 
         mJitPref = (CheckBoxPreference) prefSet.findPreference(JIT_PREF);
+
+        mBuildFingerprintPref = (ListPreference) prefSet.findPreference(BUILD_FINGERPRINT_PREF);
+        mBuildFingerprintPref.setOnPreferenceChangeListener(this);
 
         mModVersionPref = (EditTextPreference) prefSet.findPreference(MOD_VERSION_PREF);
         String mod = Helpers.findBuildPropValueOf(MOD_VERSION_PROP);
@@ -357,6 +365,9 @@ public class PropModder extends PreferenceFragment implements
                             && cmd.su.runWaitFor(String.format(SDCARD_BUFFER_ON_THE_FLY_CMD, newValue.toString())).success()
                             && cmd.su.runWaitFor(String.format(SDCARD_BUFFER_CMD, newValue.toString())).success()
                             && mount("ro");
+            } else if (preference == mBuildFingerprintPref) {
+                return doMod(BUILD_FINGERPRINT_PERSIST_PROP, BUILD_FINGERPRINT_PROP,
+                        newValue.toString());
             }
         }
 
@@ -565,6 +576,13 @@ public class PropModder extends PreferenceFragment implements
             mGpuPref.setChecked(true);
         } else {
             mGpuPref.setChecked(false);
+        }
+        String fgp = Helpers.findBuildPropValueOf(BUILD_FINGERPRINT_PROP);
+        if (!fgp.equals(DISABLE)) {
+            mBuildFingerprintPref.setValue(fgp);
+            mBuildFingerprintPref.setSummary(String.format(getString(R.string.pref_build_fingerprint_alt_summary), fgp));
+        } else {
+            mBuildFingerprintPref.setValue(BUILD_FINGERPRINT_DEFAULT);
         }
     }
 }

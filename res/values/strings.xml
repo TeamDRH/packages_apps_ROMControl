@@ -19,7 +19,7 @@
     <string name="tools">Tools</string>
     <string name="weather">Weather</string>
     <string name="signal">Signal</string>
-    <string name="propmodder_title">Property mods</string>
+    <string name="propmodder_title">Build Properties</string>
 
     
     <string name="header_summary_battery">Battery bar, 1% battery mod, etc</string>
@@ -476,4 +476,6 @@
     <string name="pref_gpu_summary">To enable hardware acceleration where the GPU controls the UI instead of the CPU</string>
     <string name="pref_vvmail_title">VVMail (Sense ROMs ONLY)</string>
     <string name="pref_vvmail_summary">force Sense ROMS compatibility with VVMail</string>
-</resources>
+    <string name="pref_build_fingerprint_title">Build Fingerprint</string>
+    <string name="pref_build_fingerprint_summary">Modify build fingerprint for market identification</string>
+    <string name="pref_build_fingerprint_alt_summary">Build Fingerprint: %s</string></resources>

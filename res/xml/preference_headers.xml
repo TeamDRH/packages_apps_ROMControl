@@ -111,14 +111,14 @@
     <header
         android:id="@+id/propmodder"
         android:title="@string/propmodder_title"
-        android:icon="@drawable/ic_propmodder"
+        android:icon="@drawable/ic_rom_control_propmodder"
         android:fragment="com.roman.romcontrol.fragments.PropModder"
         android:summary="@string/header_summary_propmodder" />
 
     <header
         android:id="@+id/init_d"
         android:title="@string/pt_init_d"
-        android:icon="@drawable/ic_propmodder"
+        android:icon="@drawable/ic_rom_control_init_d"
         android:fragment="com.roman.romcontrol.fragments.InitD"
         android:summary="@string/ps_init_d" />
 

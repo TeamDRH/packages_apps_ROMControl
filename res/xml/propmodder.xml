@@ -111,6 +111,14 @@
             android:summary="@string/pref_gpu_summary"
             android:persistent="true" />
 
+        <ListPreference android:key="pref_build_fingerprint"
+            android:dialogTitle="@string/pref_build_fingerprint_title"
+            android:title="@string/pref_build_fingerprint_title"
+            android:summary="@string/pref_build_fingerprint_summary"
+            android:entries="@array/entries_build_fingerprint_explain"
+            android:entryValues="@array/entries_build_fingerprint"
+            android:persistent="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory android:key="nonProp_category"
