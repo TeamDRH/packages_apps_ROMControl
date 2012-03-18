@@ -27,6 +27,7 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+<!--
         <activity
             android:name=".fragments.UserInterface"
             android:label="User Interface" >
@@ -36,6 +37,8 @@
                 <category android:name="com.aokp.romcontrol.SHORTCUT" />
             </intent-filter>
         </activity>
+-->
+<!--
         <activity
             android:name=".fragments.StatusBarBattery"
             android:label="Statusbar Battery" >
@@ -45,6 +48,8 @@
                 <category android:name="com.aokp.romcontrol.SHORTCUT" />
             </intent-filter>
         </activity>
+-->
+<!--
         <activity
             android:name=".fragments.StatusBarToggles"
             android:label="Statusbar Toggles" >
@@ -54,6 +59,8 @@
                 <category android:name="com.aokp.romcontrol.SHORTCUT" />
             </intent-filter>
         </activity>
+-->
+<!--
         <activity
             android:name=".fragments.StatusBarClock"
             android:label="Statusbar Clock" >
@@ -63,6 +70,8 @@
                 <category android:name="com.aokp.romcontrol.SHORTCUT" />
             </intent-filter>
         </activity>
+-->
+<!--
         <activity
             android:name=".fragments.Performance"
             android:clearTaskOnLaunch="true"
@@ -73,6 +82,8 @@
                 <category android:name="com.aokp.romcontrol.SHORTCUT" />
             </intent-filter>
         </activity>
+-->
+<!--
         <activity
             android:name=".tools.VoltageControl"
             android:label="Voltage Control" >
@@ -80,6 +91,8 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+-->
+<!--
         <activity
             android:name=".fragments.Led"
             android:label="LED" >
@@ -89,6 +102,8 @@
                 <category android:name="com.aokp.romcontrol.SHORTCUT" />
             </intent-filter>
         </activity>
+-->
+<!--
         <activity
             android:name=".fragments.PowerMenu"
             android:label="Power Menu" >
@@ -98,6 +113,8 @@
                 <category android:name="com.aokp.romcontrol.SHORTCUT" />
             </intent-filter>
         </activity>
+-->
+<!--
         <activity
             android:name=".fragments.PowerSaver"
             android:label="Power Saver" >
@@ -107,6 +124,8 @@
                 <category android:name="com.aokp.romcontrol.SHORTCUT" />
             </intent-filter>
         </activity>
+-->
+<!--
         <activity
             android:name=".fragments.Lockscreens"
             android:label="Lockscreens" >
@@ -116,6 +135,8 @@
                 <category android:name="com.aokp.romcontrol.SHORTCUT" />
             </intent-filter>
         </activity>
+-->
+<!--
         <activity
             android:name=".fragments.Navbar"
             android:label="Navigation Bar" >
@@ -125,6 +146,8 @@
                 <category android:name="com.aokp.romcontrol.SHORTCUT" />
             </intent-filter>
         </activity>
+-->
+<!--
         <activity
             android:name=".fragments.StatusBarGeneral"
             android:label="Statusbar General" >
@@ -134,6 +157,8 @@
                 <category android:name="com.aokp.romcontrol.SHORTCUT" />
             </intent-filter>
         </activity>
+-->
+<!--
         <activity
             android:name=".fragments.StatusBarToggles"
             android:label="Statusbar Toggles" >
@@ -143,6 +168,8 @@
                 <category android:name="com.aokp.romcontrol.SHORTCUT" />
             </intent-filter>
         </activity>
+-->
+<!--
         <activity
             android:name=".fragments.Weather"
             android:label="Weather" >
@@ -152,6 +179,8 @@
                 <category android:name="com.aokp.romcontrol.SHORTCUT" />
             </intent-filter>
         </activity>
+-->
+<!--
         <activity
             android:name=".fragments.DensityChanger"
             android:label="@string/lcd_density_wizard" >
@@ -159,6 +188,7 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+-->
         <activity android:name=".fragments.PropModder"
             android:label="Build Props" >
             <intent-filter>
@@ -188,6 +218,7 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+<!--
         <activity
             android:name=".fragments.StatusBarSignal"
             android:label="Statusbar Signal" >
@@ -195,6 +226,7 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+-->
         <activity
             android:name="CreateShortcut"
             android:theme="@style/Theme.CreateShortCut" >
