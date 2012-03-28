@@ -924,4 +924,77 @@
         <item>verizon/trygon/stingray:3.2.4/HLK75F/221360:user/release-keys</item>
     </string-array>
 
+    <string-array name="eos_interface_settings_standard_entries">
+        <item>Airplane mode</item>
+        <item>Wifi</item>
+        <item>Rotation</item>
+        <item>Brightness</item>
+        <item>Notifications</item>
+        <item>Volume</item>
+        <item>Settings</item>
+    </string-array>
+
+    <string-array name="eos_interface_settings_standard_values">
+        <item>eos_systemui_settings_standard_airplane</item>
+        <item>eos_systemui_settings_standard_wifi</item>
+        <item>eos_systemui_settings_standard_rotation</item>
+        <item>eos_systemui_settings_standard_brightness</item>
+        <item>eos_systemui_settings_standard_notifications</item>
+        <item>eos_systemui_settings_standard_volume</item>
+        <item>eos_systemui_settings_standard_settings</item>
+    </string-array>
+    
+    <integer-array name="eos_interface_settings_standard_defaults">
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+    </integer-array>
+
+<!-- ANY changes to these values must also be reflected in the Settings class file where the preference key string and the default values are located. Any changes that are not made in both files are likely to be rejected. -->
+
+    <string-array name="eos_quick_enabled_preferences">
+        <item>eos_systemui_settings_wifi</item>
+        <item>eos_systemui_settings_bluetooth</item>
+        <item>eos_systemui_settings_gps</item>
+        <item>eos_systemui_settings_autorotate</item>
+        <item>eos_systemui_settings_silent</item>
+        <item>eos_systemui_settings_airplane</item>
+        <item>eos_systemui_settings_notifications</item>
+        <item>eos_systemui_settings_softwarekeys</item>
+        <item>eos_systemui_settings_torch</item>
+        <item>eos_systemui_settings_mobiledata</item>
+        <item>eos_systemui_settings_wifitether</item>
+        <item>eos_systemui_settings_usbtether</item>
+    </string-array>
+    <string-array name="eos_quick_enabled_names">
+        <item>Wifi</item>
+        <item>Bluetooth</item>
+        <item>GPS</item>
+        <item>Auto rotate</item>
+        <item>Silent</item>
+        <item>Airplane</item>
+        <item>Notification</item>
+        <item>Software keys</item>
+        <item>Torch</item>
+        <item>Mobile Data</item>
+	    <item>Wifi Tether</item>
+	    <item>USB Tether</item>
+    </string-array>
+
+    <string-array name="eos_interface_eos_settings_location">
+        <item>Disable</item>
+        <item>Top</item>
+        <item>Bottom</item>
+    </string-array>
+
+    <string-array name="eos_interface_eos_settings_location_values">
+        <item>disabled</item>
+        <item>top</item>
+        <item>bottom</item>
+    </string-array>
+
 </resources>

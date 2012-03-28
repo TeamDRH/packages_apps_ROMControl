@@ -22,6 +22,13 @@
         android:fragment="com.roman.romcontrol.fragments.InitD"
         android:summary="@string/ps_init_d" />
 
+    <!-- Interface Settings -->
+    <header
+        android:id="@+id/eos_interface_settings"
+        android:fragment="com.roman.romcontrol.fragments.InterfaceSettings"
+        android:icon="@drawable/eos_interface"
+        android:title="@string/eos_interface_settings" />
+
 <!--
 	<header android:title="@string/user_interface" />
 
