@@ -99,9 +99,9 @@ public class Performance extends SettingsPreferenceFragment implements
 
         if (minFree < 62)
             closestValue = values[0];
-        else if (minFree < 77)
+        else if (minFree < 87)
             closestValue = values[1];
-        else if (minFree < 104)
+        else if (minFree < 112)
             closestValue = values[2];
         else
             closestValue = values[3];
