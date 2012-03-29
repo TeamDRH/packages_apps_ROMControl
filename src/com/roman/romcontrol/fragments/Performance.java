@@ -97,16 +97,14 @@ public class Performance extends SettingsPreferenceFragment implements
         final String values[] = getResources().getStringArray(R.array.minfree_values);
         String closestValue = preferences.getString(KEY_MINFREE, values[0]);
 
-        if (minFree < 37)
+        if (minFree < 62)
             closestValue = values[0];
-        else if (minFree < 62)
-            closestValue = values[1];
         else if (minFree < 77)
+            closestValue = values[1];
+        else if (minFree < 104)
             closestValue = values[2];
-        else if (minFree < 90)
-            closestValue = values[3];
         else
-            closestValue = values[4];
+            closestValue = values[3];
 
         mFreeMem = (ListPreference) findPreference(KEY_MINFREE);
         mFreeMem.setValue(closestValue);
