@@ -95,6 +95,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment implements
             mSystemUISettings.setChecked(Settings.System.getInt(getContentResolver(),
                     Settings.System.EOS_SYSTEMUI_SETTINGS_ENABLED, 0) == 1);
             mSystemUISettings.setOnPreferenceChangeListener(this);
+
+
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.EOS_SYSTEMUI_SETTINGS_ENABLED, 1);
+
         }
 
         mSystemUISettingsLocation = (ListPreference) findPreference("eos_interface_settings_eos_settings_location");

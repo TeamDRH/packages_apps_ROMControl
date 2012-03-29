@@ -482,11 +482,12 @@
 
     <!-- Interface title for Settings -->
     <string name="eos">DRH</string>
-    <string name="eos_interface_settings">Interface</string>
+    <string name="eos_interface_settings">Interface Settings</string>
+    <string name="eos_interface_settings_summary">Configure Quick Settings and Status Bar</string>
     <string name="eos_interface_tablet">Tablet Interface Settings</string>
     <string name="eos_interface_settings_settings">Quick Settings</string>
-    <string name="eos_interface_settings_eos">DRH Settings</string>
-    <string name="eos_interface_eos_quick_enabled">Enabled DRH Settings</string>
+    <string name="eos_interface_settings_eos">Enable DRH Quick Settings</string>
+    <string name="eos_interface_eos_quick_enabled">Select DRH Quick Settings</string>
     <string name="eos_interface_settings_eos_phone_top">Show DRH Settings at the top</string>
     <string name="eos_interface_settings_eos_phone_bottom">Show DRH Settings at the bottom</string>
     <string name="eos_interface_settings_standard">Standard Quick settings</string>

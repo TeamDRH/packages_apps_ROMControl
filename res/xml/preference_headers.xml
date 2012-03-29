@@ -27,7 +27,8 @@
         android:id="@+id/eos_interface_settings"
         android:fragment="com.roman.romcontrol.fragments.InterfaceSettings"
         android:icon="@drawable/eos_interface"
-        android:title="@string/eos_interface_settings" />
+        android:title="@string/eos_interface_settings"
+        android:summary="@string/eos_interface_settings_summary" />
 
 <!--
 	<header android:title="@string/user_interface" />
@@ -153,12 +154,10 @@
 <!--
 	<header android:title="@string/tools" />
 -->
-<!--
 	<header
 		android:id="@+id/performance"
 		android:title="@string/pt_performance"
 		android:summary="@string/ps_performance"
 		android:fragment="com.roman.romcontrol.fragments.Performance"
 		android:icon="@drawable/ic_rom_control_performance" />
--->
 </preference-headers>

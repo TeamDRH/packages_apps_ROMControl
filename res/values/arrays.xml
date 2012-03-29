@@ -334,19 +334,17 @@
 	</string-array>
 
 	<string-array name="minfree">
-		<item>25mb</item>
-		<item>50mb</item>
-		<item>75mb</item>
-		<item>80mb</item>
-		<item>100mb</item>
+		<item>Minimal (50mb)</item>
+        <item>Multitasking (75mb)</item>
+        <item>Balanced (100mb)</item>
+        <item>Aggressive (125mb)</item>
 	</string-array>
 
 	<string-array name="minfree_values">
-		<item>1536,2048,4096,5120,5632,6144</item>
-		<item>2560,3840,6400,7680,10240,12800</item>
-		<item>2560,3840,6400,10240,12800,19200</item>
-		<item>2048,3072,6144,15360,17920,20480</item>
-		<item>2560,3840,6400,12800,12800,25600</item>
+		<item>2048,3072,6400,7680,10240,12800</item>
+		<item>2048,3584,10240,12800,15360,19200</item>
+		<item>2048,3584,14080,17920,21760,25600</item>
+		<item>2048,3584,19200,23040,24320,32000</item>
 	</string-array>
 
         <string-array name="entries_scrollingcache" translatable="false">
@@ -964,8 +962,6 @@
         <item>eos_systemui_settings_silent</item>
         <item>eos_systemui_settings_airplane</item>
         <item>eos_systemui_settings_notifications</item>
-        <item>eos_systemui_settings_softwarekeys</item>
-        <item>eos_systemui_settings_torch</item>
         <item>eos_systemui_settings_mobiledata</item>
         <item>eos_systemui_settings_wifitether</item>
         <item>eos_systemui_settings_usbtether</item>
@@ -978,8 +974,6 @@
         <item>Silent</item>
         <item>Airplane</item>
         <item>Notification</item>
-        <item>Software keys</item>
-        <item>Torch</item>
         <item>Mobile Data</item>
 	    <item>Wifi Tether</item>
 	    <item>USB Tether</item>
