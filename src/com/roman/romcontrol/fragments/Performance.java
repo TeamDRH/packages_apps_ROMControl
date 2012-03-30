@@ -28,6 +28,7 @@ public class Performance extends SettingsPreferenceFragment implements
     public static final String KEY_MAX_CPU = "max_cpu";
     public static final String KEY_MIN_CPU = "min_cpu";
     public static final String KEY_GOV = "gov";
+    public static final String KEY_SCHED = "sched";
     public static final String KEY_CPU_BOOT = "cpu_boot";
     public static final String KEY_MINFREE = "free_memory";
 
@@ -36,16 +37,20 @@ public class Performance extends SettingsPreferenceFragment implements
     private static final String MIN_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq";
     private static final String GETALL_GOV = "sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors";
     private static final String CUR_GOV = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor";
+    private static final String GETALL_SCHED = "/sys/block/mmcblk0/queue/scheduler";
+    private static final String CUR_SCHED = "/sys/block/mmcblk0/queue/scheduler";
     public static final String MINFREE = "/sys/module/lowmemorykiller/parameters/minfree";
     private static final String SCROLLINGCACHE_PREF = "pref_scrollingcache";
     private static final String SCROLLINGCACHE_PERSIST_PROP = "persist.sys.scrollingcache";
     private static final String SCROLLINGCACHE_DEFAULT = "1";
 
     private String[] ALL_GOV;
+    private String[] ALL_SCHED;
     private int[] SPEED_STEPS;
     private ListPreference mMinCpu;
     private ListPreference mMaxCpu;
     private ListPreference mSetGov;
+    private ListPreference mSetSched;
     private ListPreference mFreeMem;
     private ListPreference mScrollingCachePref;
     private SharedPreferences preferences;
@@ -68,7 +73,9 @@ public class Performance extends SettingsPreferenceFragment implements
         final String maxInMhz = (Integer.toString((Integer.parseInt(maxFreq) / 1000)) + " MHz");
         final String minInMhz = (Integer.toString((Integer.parseInt(minFreq) / 1000)) + " MHz");
         final String govs[] = getAllGovs();
+        final String scheds[] = getAllScheds();
         final String currentGov = (Helpers.getFile(CUR_GOV).trim());
+        final String currentSched = getCurrentSched();
 
         mMaxCpu = (ListPreference) findPreference(KEY_MAX_CPU);
         mMaxCpu.setEntries(freqList);
@@ -87,6 +94,12 @@ public class Performance extends SettingsPreferenceFragment implements
         mSetGov.setEntryValues(govs);
         mSetGov.setValue(currentGov);
         mSetGov.setSummary(getString(R.string.ps_set_gov, currentGov));
+
+        mSetSched = (ListPreference) findPreference(KEY_SCHED);
+        mSetSched.setEntries(scheds);
+        mSetSched.setEntryValues(scheds);
+        mSetSched.setValue(currentGov);
+        mSetSched.setSummary(getString(R.string.ps_set_sched, currentSched));
 
         mScrollingCachePref = (ListPreference) findPreference(SCROLLINGCACHE_PREF);
         mScrollingCachePref.setValue(SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP,
@@ -144,6 +157,14 @@ public class Performance extends SettingsPreferenceFragment implements
                 if ((new CMDProcessor().su
                         .runWaitFor("busybox echo " + value + " > " + CUR_GOV)).success())
                     mSetGov.setSummary(getString(R.string.ps_set_gov, value));
+            } else if (key.equals(KEY_SCHED)) {
+                final String value = preferences.getString(key, null);
+                if ((new CMDProcessor().su
+                        .runWaitFor("busybox echo " + value + " > " + CUR_SCHED)).success())
+                    mSetSched.setSummary(getString(R.string.ps_set_sched, value));
+                new CMDProcessor().su.runWaitFor("busybox echo " + value + " > " + CUR_SCHED.replace("mmcblk0", "mmcblk1"));
+                new CMDProcessor().su.runWaitFor("busybox echo " + value + " > " + CUR_SCHED.replace("mmcblk0", "mtdblock3"));
+                new CMDProcessor().su.runWaitFor("busybox echo " + value + " > " + CUR_SCHED.replace("mmcblk0", "mtdblock4"));
             } else if (key.equals(KEY_MINFREE)) {
                 String values = preferences.getString(key, null);
                 if (!values.equals(null))
@@ -215,6 +236,35 @@ public class Performance extends SettingsPreferenceFragment implements
             };
         }
         return ALL_GOV;
+    }
+
+    public String[] getAllScheds() {
+        String scheds = Helpers.getFile(GETALL_SCHED);
+        if (scheds != null && scheds != "") {
+            String[] schedList = scheds.trim().split(" ");
+            ALL_SCHED = new String[schedList.length];
+            for (int i = 0; i < schedList.length; i++) {
+                if (schedList[i].indexOf("[") == -1) {
+                    ALL_SCHED[i] = schedList[i];
+                } else {
+                    ALL_SCHED[i] = schedList[i].substring(schedList[i].indexOf("[")+1, schedList[i].indexOf("]"));
+                }
+            }
+        } else {
+            ALL_SCHED = new String[] {
+                    "noop", "deadline", "cfq"
+            };
+        }
+
+        return ALL_SCHED;
+    }
+
+    public String getCurrentSched() {
+        String scheds = Helpers.getFile(GETALL_SCHED);
+
+        String currSched = scheds.substring(scheds.indexOf("[") + 1, scheds.indexOf("]"));
+
+        return currSched;
     }
 
     private int getMinFreeValue() {

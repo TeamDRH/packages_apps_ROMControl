@@ -120,7 +120,7 @@
             android:persistent="true" />
 
     </PreferenceCategory>
-
+<!--
     <PreferenceCategory android:key="nonProp_category"
         android:title="@string/nonprop_cat_title">
 
@@ -138,6 +138,6 @@
             android:persistent="true" />
 
     </PreferenceCategory>
-
+-->
 </PreferenceScreen>
 

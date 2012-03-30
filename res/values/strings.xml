@@ -321,6 +321,7 @@
 	<string name="pt_set_max">Max CPU</string>
 	<string name="pt_set_min">Min CPU</string>
 	<string name="pt_set_gov">Scaling governor</string>
+	<string name="pt_set_sched">I/O scheduler</string>
 	<string name="pt_cpu_boot">Set at boot</string>
         <!-- Scrolling Cache -->
         <string name="pref_scrollingcache_title">Scrolling cache</string>
@@ -365,9 +366,10 @@
 	<string name="ps_set_max">Set max CPU scaling frequency\nCurrent: %s</string>
 	<string name="ps_set_min">Set min CPU scaling frequency\nCurrent: %s</string>
 	<string name="ps_set_gov">Set current scaling governor\nCurrent: %s</string>
+	<string name="ps_set_sched">Set current I/O scheduler\nCurrent: %s</string>
 	<string name="ps_cpu_boot">Apply CPU at boot</string>
 	<!-- Performance -->
-	<string name="ps_set_cpu_activity">Set min/max frequencies and scaling governor
+	<string name="ps_set_cpu_activity">Set min/max frequencies, governor and scheduler
 	</string>
 	<string name="ps_free_memory">Amount of RAM the minfree taskkiller will keep |
 		Current: %s</string>

@@ -22,6 +22,12 @@
 			android:summary="@string/ps_set_gov"
 			android:dialogTitle="@string/pt_set_gov"
 			android:persistent="true" />
+		<ListPreference
+			android:key="sched"
+			android:title="@string/pt_set_sched"
+			android:summary="@string/ps_set_sched"
+			android:dialogTitle="@string/pt_set_sched"
+			android:persistent="true" />
 		<CheckBoxPreference
 			android:key="cpu_boot"
 			android:defaultValue="false"

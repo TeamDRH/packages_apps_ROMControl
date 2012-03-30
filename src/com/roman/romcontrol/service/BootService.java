@@ -20,6 +20,7 @@ public class BootService extends Service {
 
     static final String TAG = "Liberty Settings Service";
     private static final String CUR_GOV = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor";
+    private static final String CUR_SCHED = "/sys/block/mmcblk0/queue/scheduler";
     private static final String MAX_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq";
     private static final String MIN_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq";
     private final BootService service = this;
@@ -49,6 +50,22 @@ public class BootService extends Service {
                                     + MIN_FREQ.replace("cpu0", "cpu1"));
                             cmd.su.runWaitFor("busybox echo " + gov + " > "
                                     + CUR_GOV.replace("cpu0", "cpu1"));
+                        }
+                    }
+                    final String sched = preferences.getString("sched", null);
+                    if (sched != null) {
+                        cmd.su.runWaitFor("busybox echo " + sched + " > " + CUR_SCHED);
+                        if (new File("/sys/block/mmcblk1/queue/scheduler").exists()) {
+                            cmd.su.runWaitFor("busybox echo " + sched + " > "
+                                    + CUR_SCHED.replace("mmcblk0", "mmcblk1"));
+                        }
+                        if (new File("/sys/block/mtdblock3/queue/scheduler").exists()) {
+                            cmd.su.runWaitFor("busybox echo " + sched + " > "
+                                    + CUR_SCHED.replace("mmcblk0", "mtdblock3"));
+                        }
+                        if (new File("/sys/block/mtdblock4/queue/scheduler").exists()) {
+                            cmd.su.runWaitFor("busybox echo " + sched + " > "
+                                    + CUR_SCHED.replace("mmcblk0", "mtdblock4"));
                         }
                     }
                 }
