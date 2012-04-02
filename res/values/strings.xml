@@ -282,6 +282,7 @@
 	<!-- Preference Categories -->
 	<string name="prefcat_cpu">Set CPU</string>
 	<string name="prefcat_free_memory">Free Memory</string>
+	<string name="prefcat_perf_tweaks">Performance Tweaks</string>
 	<string name="pc_tweaks">Tweaks</string>
 	<string name="pc_init_d">Enable/Disable Tweaks</string>
 	<string name="pc_init_d_tweaks">Customize Tweaks</string>
@@ -497,5 +498,25 @@
     <string name="eos_interface_statusbar_battery_icon">Battery Icon</string>
     <string name="eos_interface_statusbar_battery_text">Battery Text</string>
     <string name="eos_interface_statusbar_visibility">Show the status bar toggle in the power menu</string>
+
+    <!-- From CM Settings for additional Performance Tweaks -->
+
+    <!-- Performance Settings : Warning dialog #CM -->
+    <string name="performance_settings_warning_title">Proceed with Caution</string>
+    <string name="performance_settings_warning">These settings are included for experimentation and any changes made to them have the potential to cause instability, crashes, data loss or hardware failures.\n\nWe request you do not file bug reports if any of these settings have been changed from the defaults.</string>
+
+    <!-- Purgeable Assets -->
+    <string name="pref_purgeable_assets_title">Allow purging of assets</string>
+    <string name="pref_purgeable_assets_summary">Purging of bitmap memory assets allows the freeing of more RAM when needed (requires reboot)</string>
+
+    <!-- Performance Settings : Dithering -->
+    <string name="pref_use_dithering_title">Surface dithering</string>
+    <string name="pref_use_dithering_summary">Dithering improves image quality on some displays at the cost of performance (requires reboot)</string>
+
+    <!-- Performance Settings : 16bpp Alpha -->
+    <string name="pref_use_16bpp_alpha_title">16bit transparency</string>
+    <string name="pref_use_16bpp_alpha_summary">Better graphics performance, but lower quality and may cause visual artifacts (requires reboot)</string>
+
+
 
 </resources>

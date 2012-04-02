@@ -18,7 +18,7 @@ import com.roman.romcontrol.util.CMDProcessor;
 
 public class BootService extends Service {
 
-    static final String TAG = "Liberty Settings Service";
+    static final String TAG = "DRH Settings Service";
     private static final String CUR_GOV = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor";
     private static final String CUR_SCHED = "/sys/block/mmcblk0/queue/scheduler";
     private static final String MAX_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq";
@@ -40,6 +40,8 @@ public class BootService extends Service {
                     final String min = preferences.getString("min_cpu", null);
                     final String gov = preferences.getString("gov", null);
                     if (max != null && min != null && gov != null) {
+                        Log.i(TAG, "Restoring CPU Governor Settings: max - " + max + 
+                                    ", min - " + min + ", governor - " + gov);
                         cmd.su.runWaitFor("busybox echo " + max + " > " + MAX_FREQ);
                         cmd.su.runWaitFor("busybox echo " + min + " > " + MIN_FREQ);
                         cmd.su.runWaitFor("busybox echo " + gov + " > " + CUR_GOV);
@@ -54,10 +56,23 @@ public class BootService extends Service {
                     }
                     final String sched = preferences.getString("sched", null);
                     if (sched != null) {
+                        Log.i(TAG, "Restoring I/O Scheduler Setting: " + sched);
                         cmd.su.runWaitFor("busybox echo " + sched + " > " + CUR_SCHED);
                         if (new File("/sys/block/mmcblk1/queue/scheduler").exists()) {
                             cmd.su.runWaitFor("busybox echo " + sched + " > "
                                     + CUR_SCHED.replace("mmcblk0", "mmcblk1"));
+                        }
+                        if (new File("/sys/block/mtdblock0/queue/scheduler").exists()) {
+                            cmd.su.runWaitFor("busybox echo " + sched + " > "
+                                    + CUR_SCHED.replace("mmcblk0", "mtdblock0"));
+                        }
+                        if (new File("/sys/block/mtdblock1/queue/scheduler").exists()) {
+                            cmd.su.runWaitFor("busybox echo " + sched + " > "
+                                    + CUR_SCHED.replace("mmcblk0", "mtdblock1"));
+                        }
+                        if (new File("/sys/block/mtdblock2/queue/scheduler").exists()) {
+                            cmd.su.runWaitFor("busybox echo " + sched + " > "
+                                    + CUR_SCHED.replace("mmcblk0", "mtdblock2"));
                         }
                         if (new File("/sys/block/mtdblock3/queue/scheduler").exists()) {
                             cmd.su.runWaitFor("busybox echo " + sched + " > "
@@ -66,6 +81,14 @@ public class BootService extends Service {
                         if (new File("/sys/block/mtdblock4/queue/scheduler").exists()) {
                             cmd.su.runWaitFor("busybox echo " + sched + " > "
                                     + CUR_SCHED.replace("mmcblk0", "mtdblock4"));
+                        }
+                        if (new File("/sys/block/mtdblock5/queue/scheduler").exists()) {
+                            cmd.su.runWaitFor("busybox echo " + sched + " > "
+                                    + CUR_SCHED.replace("mmcblk0", "mtdblock5"));
+                        }
+                        if (new File("/sys/block/mtdblock6/queue/scheduler").exists()) {
+                            cmd.su.runWaitFor("busybox echo " + sched + " > "
+                                    + CUR_SCHED.replace("mmcblk0", "mtdblock6"));
                         }
                     }
                 }

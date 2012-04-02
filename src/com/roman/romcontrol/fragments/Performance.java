@@ -3,11 +3,14 @@ package com.roman.romcontrol.fragments;
 
 import java.io.File;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.os.SystemProperties;
 import android.preference.ListPreference;
+import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
@@ -39,6 +42,18 @@ public class Performance extends SettingsPreferenceFragment implements
     private static final String CUR_GOV = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor";
     private static final String GETALL_SCHED = "/sys/block/mmcblk0/queue/scheduler";
     private static final String CUR_SCHED = "/sys/block/mmcblk0/queue/scheduler";
+    
+    private static final String PURGEABLE_ASSETS_PREF = "pref_purgeable_assets";
+    private static final String PURGEABLE_ASSETS_PERSIST_PROP = "persist.sys.purgeable_assets";
+    private static final String PURGEABLE_ASSETS_DEFAULT = "0";
+
+    private static final String USE_DITHERING_PREF = "pref_use_dithering";
+    private static final String USE_DITHERING_PERSIST_PROP = "persist.sys.use_dithering";
+    private static final String USE_DITHERING_DEFAULT = "1";
+
+    private static final String USE_16BPP_ALPHA_PREF = "pref_use_16bpp_alpha";
+    private static final String USE_16BPP_ALPHA_PROP = "persist.sys.use_16bpp_alpha";
+   
     public static final String MINFREE = "/sys/module/lowmemorykiller/parameters/minfree";
     private static final String SCROLLINGCACHE_PREF = "pref_scrollingcache";
     private static final String SCROLLINGCACHE_PERSIST_PROP = "persist.sys.scrollingcache";
@@ -51,10 +66,17 @@ public class Performance extends SettingsPreferenceFragment implements
     private ListPreference mMaxCpu;
     private ListPreference mSetGov;
     private ListPreference mSetSched;
+
+    private CheckBoxPreference mPurgeableAssetsPref;
+    private CheckBoxPreference mUseDitheringPref;
+    private CheckBoxPreference mUse16bppAlphaPref;
+
     private ListPreference mFreeMem;
     private ListPreference mScrollingCachePref;
     private SharedPreferences preferences;
     private boolean doneLoading = false;
+    
+    private AlertDialog alertDialog;
 
     /** Called when the activity is first created. */
     @Override
@@ -98,8 +120,12 @@ public class Performance extends SettingsPreferenceFragment implements
         mSetSched = (ListPreference) findPreference(KEY_SCHED);
         mSetSched.setEntries(scheds);
         mSetSched.setEntryValues(scheds);
-        mSetSched.setValue(currentGov);
+        mSetSched.setValue(currentSched);
         mSetSched.setSummary(getString(R.string.ps_set_sched, currentSched));
+
+        mPurgeableAssetsPref = (CheckBoxPreference) findPreference(PURGEABLE_ASSETS_PREF);
+        mUseDitheringPref = (CheckBoxPreference) findPreference(USE_DITHERING_PREF);
+        mUse16bppAlphaPref = (CheckBoxPreference) findPreference(USE_16BPP_ALPHA_PREF);
 
         mScrollingCachePref = (ListPreference) findPreference(SCROLLINGCACHE_PREF);
         mScrollingCachePref.setValue(SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP,
@@ -129,7 +155,53 @@ public class Performance extends SettingsPreferenceFragment implements
                     .removePreference(ps);
         }
 
+        String purgeableAssets = SystemProperties.get(PURGEABLE_ASSETS_PERSIST_PROP,
+                PURGEABLE_ASSETS_DEFAULT);
+        mPurgeableAssetsPref.setChecked("1".equals(purgeableAssets));
+
+        String useDithering = SystemProperties.get(USE_DITHERING_PERSIST_PROP,
+                USE_DITHERING_DEFAULT);
+        mUseDitheringPref.setChecked("1".equals(useDithering));
+
+        String use16bppAlpha = SystemProperties.get(USE_16BPP_ALPHA_PROP, "0");
+        mUse16bppAlphaPref.setChecked("1".equals(use16bppAlpha));
+
+        /* Display the warning dialog */
+        alertDialog = new AlertDialog.Builder(getActivity()).create();
+        alertDialog.setTitle(R.string.performance_settings_warning_title);
+        alertDialog.setMessage(getResources().getString(R.string.performance_settings_warning));
+        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE,
+                getResources().getString(com.android.internal.R.string.ok),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        return;
+                    }
+                });
+
+        alertDialog.show();
+
         doneLoading = true;
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+
+        if (preference == mPurgeableAssetsPref) {
+            SystemProperties.set(PURGEABLE_ASSETS_PERSIST_PROP,
+                    mPurgeableAssetsPref.isChecked() ? "1" : "0");
+            return true;
+        } else if (preference == mUseDitheringPref) {
+            SystemProperties.set(USE_DITHERING_PERSIST_PROP,
+                    mUseDitheringPref.isChecked() ? "1" : "0");
+        } else if (preference == mUse16bppAlphaPref) {
+            SystemProperties.set(USE_16BPP_ALPHA_PROP,
+                    mUse16bppAlphaPref.isChecked() ? "1" : "0");
+        } else {
+            // If we didn't handle it, let preferences handle it.
+            return super.onPreferenceTreeClick(preferenceScreen, preference);
+        }
+
+        return false;
     }
 
     @Override
@@ -163,8 +235,13 @@ public class Performance extends SettingsPreferenceFragment implements
                         .runWaitFor("busybox echo " + value + " > " + CUR_SCHED)).success())
                     mSetSched.setSummary(getString(R.string.ps_set_sched, value));
                 new CMDProcessor().su.runWaitFor("busybox echo " + value + " > " + CUR_SCHED.replace("mmcblk0", "mmcblk1"));
+                new CMDProcessor().su.runWaitFor("busybox echo " + value + " > " + CUR_SCHED.replace("mmcblk0", "mtdblock0"));
+                new CMDProcessor().su.runWaitFor("busybox echo " + value + " > " + CUR_SCHED.replace("mmcblk0", "mtdblock1"));
+                new CMDProcessor().su.runWaitFor("busybox echo " + value + " > " + CUR_SCHED.replace("mmcblk0", "mtdblock2"));
                 new CMDProcessor().su.runWaitFor("busybox echo " + value + " > " + CUR_SCHED.replace("mmcblk0", "mtdblock3"));
                 new CMDProcessor().su.runWaitFor("busybox echo " + value + " > " + CUR_SCHED.replace("mmcblk0", "mtdblock4"));
+                new CMDProcessor().su.runWaitFor("busybox echo " + value + " > " + CUR_SCHED.replace("mmcblk0", "mtdblock5"));
+                new CMDProcessor().su.runWaitFor("busybox echo " + value + " > " + CUR_SCHED.replace("mmcblk0", "mtdblock6"));
             } else if (key.equals(KEY_MINFREE)) {
                 String values = preferences.getString(key, null);
                 if (!values.equals(null))
